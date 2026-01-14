@@ -42,7 +42,7 @@ sudo netplan apply
 ```bash
 sudo chmod 600 /etc/netplan/00-installer-config.yaml
 ```
-## Masuk ke sebagai root
+## Untuk Masuk ke sebagai root
 
 ```bash
 sudo su
@@ -126,7 +126,13 @@ post_max_size = 10M
 upload_max_filesize = 10M
 date.timezone = Asia/Jakarta
 ```
-
+## Ubah menjadi dinamis agar bisa diakses dari IP mana saja
+```bash
+sudo nano /var/www/html/moodle/config.php
+```
+```php
+$CFG->wwwroot = 'http://' . $_SERVER['HTTP_HOST'] . '/moodle';
+```
 ## Restart Apache
 ```bash
 systemctl restart apache2
