@@ -1,5 +1,5 @@
-# Konfigurasi Databases-VM and Webserver-VM UKK-P2 SMK Nurul Huda Paguyangan
-
+# UKK-P2 SMK Nurul Huda Paguyangan
+# Konfigurasi Databases-VM and Webserver-VM
 ## config change hostname ubuntu
 ```bash
 sudo hostnamectl set-hostname web-xx
