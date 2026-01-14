@@ -118,7 +118,7 @@ chmod -R 777 moodle
 
 ## Ubah konfigurasi pada PHP.ini
 ```bash
-nano /var/www/html/etc/php/8.3/apache2/php.ini
+nano /etc/php/8.3/apache2/php.ini
 # ubah setiap value serti di bawah
 max_input_vars = 5000
 memory_limit = 512M
