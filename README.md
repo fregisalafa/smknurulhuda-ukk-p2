@@ -37,6 +37,11 @@ network:
 ```bash
 sudo netplan apply
 ```
+
+## Jika terjadi error pada netplan (permissions for /etc/netplan/00-installer-config.yaml are too open)
+```bash
+sudo chmod 600 /etc/netplan/00-installer-config.yaml
+```
 ## Masuk ke sebagai root
 
 ```bash
