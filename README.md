@@ -105,9 +105,10 @@ tar -zxvf moodle-latest-405.tgz
 mkdir -p /var/www/moodledata
 ```
 ## Beri hak akses ke folder data
+```bash
 chown -R www-data:www-data /var/www/moodledata
 chmod -R 777 /var/www/moodledata
-
+```
 ## Beri hak akses ke folder program moodle
 ```bash
 cd /var/www/html
