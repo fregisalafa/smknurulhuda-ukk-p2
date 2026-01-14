@@ -1,4 +1,4 @@
-# Konfigurasi Databases-VM and Webserver-VM UKK-P2
+# Konfigurasi Databases-VM and Webserver-VM UKK-P2 SMK Nurul Huda Paguyangan
 
 ## config change hostname ubuntu
 ```bash
