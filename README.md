@@ -1,17 +1,14 @@
 # UKK-P2 SMK Nurul Huda Paguyangan
-# Konfigurasi Databases-VM and Webserver-VM
+# Konfigurasi Databases-VM
 ## config change hostname ubuntu
 ```bash
-sudo hostnamectl set-hostname web-xx
+hostnamectl set-hostname web-xx
 ```
 ## Memperbarui File hostname
 ```bash
-sudo nano /etc/hosts
+nano /etc/hosts
 ```
-## cek direktori netplan
-```bash
-ls /etc/netplan/
-```
+
 
 ## Perubahan IP Static Pada Server
 ```bash
@@ -33,20 +30,16 @@ network:
           - 8.8.8.8
           - 8.8.4.4
 ```
-## terapkan Konfigurasi IP
-```bash
-sudo netplan apply
-```
 
 ## Jika terjadi error pada netplan (permissions for /etc/netplan/00-installer-config.yaml are too open)
 ```bash
 sudo chmod 600 /etc/netplan/00-installer-config.yaml
 ```
-## Untuk Masuk ke sebagai root
-
+## terapkan Konfigurasi IP
 ```bash
-sudo su
+sudo netplan apply
 ```
+
 # Konfigurasi Pada Databases-VM
 ## Install mysql server
 ```bash
@@ -81,6 +74,15 @@ EXIT;
 ```
 # Konfigurasi Pada WebServer-VM
 ## Install aplikasi Apache
+## config change hostname ubuntu
+```bash
+hostnamectl set-hostname web-xx
+```
+## Memperbarui File hostname
+```bash
+nano /etc/hosts
+```
+
 ```bash
 # Update daftar aplikasi
 apt update
@@ -128,7 +130,7 @@ date.timezone = Asia/Jakarta
 ```
 ## Ubah menjadi dinamis agar bisa diakses dari IP mana saja
 ```bash
-sudo nano /var/www/html/moodle/config.php
+nano /var/www/html/moodle/config.php
 ```
 ```php
 $CFG->wwwroot = 'http://' . $_SERVER['HTTP_HOST'] . '/moodle';
