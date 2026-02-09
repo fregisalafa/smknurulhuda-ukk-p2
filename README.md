@@ -118,7 +118,7 @@ Akses server db via CMD
 ssh ukkxx@192.168.xx.2
 ## jika ada perintah yes/ no
 yes
-## pasukan password pada server DB
+## pasukan password pada server web
 
 ```
 Switch ke user root
