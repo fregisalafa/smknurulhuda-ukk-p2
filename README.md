@@ -23,11 +23,11 @@ network:
 ```
 Beri izin hanya pada user root
 ```bash
-sudo chmod 600 /etc/netplan/00-installer-config.yaml
+chmod 600 /etc/netplan/00-installer-config.yaml
 ```
 Terapkan koneksi netplan
 ```bash
-sudo netplan apply
+netplan apply
 ```
 Cek koneksi internet
 ```bash
@@ -50,13 +50,13 @@ nano /etc/hosts
 ```
 Ubah alamat ip  pada vm-db
 ```bash
-sudo nano /etc/netplan/00-installer-config.yaml
+nano /etc/netplan/00-installer-config.yaml
 
 # ubah ip 192.168.xx.2 menjadi 192.168.xx.3
 ```
 Terapkan koneksi netplan
 ```bash
-sudo netplan apply
+netplan apply
 ```
 Cek koneksi internet
 ```bash
@@ -67,7 +67,11 @@ ping 8.8.8.8
 ## konfiurasi pada vm db via CMD
 Akses server db via CMD
 ```cmd
-ssh ukkxx@192.168.xx.2
+ssh ukkxx@192.168.xx.3
+## jika ada perintah yes/ no
+yes
+## pasukan password pada server DB
+
 ```
 Switch ke user root
 ```bash
@@ -91,16 +95,18 @@ Masuk ke MYSQL
 mysql
 ```
 ```mysql
-CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 # Untuk membuat database
-CREATE USER 'fregi'@'%' IDENTIFIED BY 'salafa';
+CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 # Membuat user
-GRANT ALL PRIVILEGES ON moodle.* TO 'fregi'@'%';
+#'fregi'@'%' ubah menjadi nama kalian untuk dijadikan username
+#'salafa' ubah menjadi nama kalian untuk dijadikan passworrd
+CREATE USER 'fregi'@'%' IDENTIFIED BY 'salafa';
 # memberikan akses penuh pada user yang dibuat
-FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON moodle.* TO 'fregi'@'%';
 # Restart database
-EXIT;
+FLUSH PRIVILEGES;
 # keluar dari mysql
+EXIT;
 ```
 Restart MYSQL
 ```bash
@@ -109,7 +115,11 @@ systemctl restart mysql
 ## konfiurasi pada vm web via CMD
 Akses server db via CMD
 ```cmd
-ssh ukkxx@192.168.xx.3
+ssh ukkxx@192.168.xx.2
+## jika ada perintah yes/ no
+yes
+## pasukan password pada server DB
+
 ```
 Switch ke user root
 ```bash
@@ -152,8 +162,9 @@ chmod -R 777 moodle
 Ubah konfigurasi pada PHP.ini
 ```bash
 nano /etc/php/8.3/apache2/php.ini
-# ubah setiap value serti di bawah
-max_input_vars = 5000
+# ubah setiap value seperti di bawah
+;max_input_vars = 5000
+#hapus tanda ; di max_input_vars
 memory_limit = 512M
 post_max_size = 10M
 upload_max_filesize = 10M
@@ -162,7 +173,9 @@ Restart Apache
 ```bash
 systemctl restart apache2
 ```
-Ubah menjadi dinamis agar bisa diakses dari IP mana saja
+masuk ke web browser ketik ip pada server web di url setelah kebuka lanjutan sampai selesai
+
+setelah selsai ubah menjadi dinamis agar bisa diakses dari IP mana saja
 ```bash
 nano /var/www/html/moodle/config.php
 ```
